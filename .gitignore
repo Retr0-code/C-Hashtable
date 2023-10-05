@@ -1,2 +1,6 @@
 .vscode
 test
+hash-table.vcxproj
+hash-table.vcxproj.filters
+hash-table.vcxproj.user
+x64

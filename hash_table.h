@@ -25,23 +25,26 @@ typedef struct hashtable_t
 } hashtable_t;
 
 // Initializes hash table of specific size with specific hash function
-int hash_table_init(
+int ht_init(
     size_t size,
     hash_func_t ht_func_ptr,
     hashtable_t* hash_table
     );
 
 // Adds new element to hashtable
-int hash_table_emplace(const char* key, hashtable_t* hash_table);
+int ht_emplace(const char* key, void* value, hashtable_t* hash_table);
 
 // Removes element from hashtable
-int hash_table_remove(const char* key, hashtable_t* hash_table);
+int ht_remove_elem(const char* key, hashtable_t* hash_table);
 
 // Properly frees memory of hashtable
-int hash_table_destroy(hashtable_t* hash_table);
+void ht_destroy(hashtable_t* hash_table);
 
 // Initializes node with NULLs
 void ht_node_init(ht_node_t* node);
+
+// Returns zero if added directly to a table and 1 if added to linked list
+int ht_insert_node(const ht_node_t* node, ht_node_t** nodes_space, hashtable_t* hash_table);
 
 // Destroys all nodes including base node
 void ht_node_destroy_from_base(ht_node_t* base_node);
