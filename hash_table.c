@@ -125,10 +125,13 @@ void* ht_get_elem(const char* key, hashtable_t* hash_table)
 
     // Compare keys to get to required node
     int result = strcmp(last_node->key, key);
-    while (result != 0 || last_node->next != NULL)
+    while (result != 0)
     {
+        if (last_node->next == NULL)
+            break;
+
         last_node = last_node->next;
-        result = strcmp(last_node->key, key);
+            result = strcmp(last_node->key, key);
     }
 
     // If key was found then set value
